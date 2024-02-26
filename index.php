@@ -1,5 +1,4 @@
-<?php
-?>
+<?php require_once "./main.php"?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +15,33 @@
 </head>
 
 <body>
+<div class="container">
+    <h1 class="fw-bold text-center mt-3 mb-5">PHP HOTEL</h1>
 
-<h1 class="fw-bold">PHP HOTEL</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Parcheggio</th>
+      <th scope="col">Voto</th>
+      <th scope="col">Distanza dal centro</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <?php foreach($hotels as $hotel): ?>
+        <tr>
+            <td><?= $hotel["name"] ?></td>
+            <td><?= $hotel["description"] ?></td>
+            <td><?= $hotel["parking"] ? 'true' : 'false' ?></td>
+            <td><?= $hotel["vote"] ?></td>
+            <td><?= $hotel["distance_to_center"] . " km" ?></td>
+        </tr>
+    <?php endforeach ?>
+  </tbody>
+</table>
+</div>
     
 </body>
 </html>
