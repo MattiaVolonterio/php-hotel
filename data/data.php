@@ -37,15 +37,3 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
-
-
-$filtered_hotels = [];
-
-$parking_filter = isset($_GET["parking-select"]) ? true : false;
-$vote_filter = $_GET["hotel-vote"] ?? false;
-
-if ($parking_filter)
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking']);
-
-if ($vote_filter)
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] >= $vote_filter);

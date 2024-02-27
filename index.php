@@ -1,4 +1,4 @@
-<?php require_once "./main.php" ?>
+<?php require_once __DIR__ . "/logic/main.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,23 +67,7 @@
 
       <tbody>
         <?php foreach ($hotels as $hotel): ?>
-          <tr>
-            <td>
-              <?= $hotel["name"] ?>
-            </td>
-            <td>
-              <?= $hotel["description"] ?>
-            </td>
-            <td>
-              <?= $hotel["parking"] ? 'true' : 'false' ?>
-            </td>
-            <td>
-              <?= $hotel["vote"] ?>
-            </td>
-            <td>
-              <?= $hotel["distance_to_center"] . " km" ?>
-            </td>
-          </tr>
+          <?php include __DIR__ . "/template/tableRow.php" ?>
         <?php endforeach ?>
       </tbody>
     </table>
