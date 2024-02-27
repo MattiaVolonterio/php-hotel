@@ -9,10 +9,13 @@
   <title>PHP Hotel</title>
 
   <!-- LINK BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <!-- SCRIPT BOOTSRAP -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+    defer></script>
 </head>
 
 <body>
@@ -25,26 +28,22 @@
       <div class="row mb-3">
         <!-- filtro per parcheggio -->
         <div class="col-6">
-          <label for="parking-select" class="form-label">Filtra per disponibilità parcheggio</label>
-          <select class="form-select" name="parking-select" id="parking-select">
-            <option value="all">Qualsiasi</option>
-            <option value="true">Con Parcheggio</option>
-            <option value="false">Senza Parcheggio</option>
-          </select>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="parking-select" name="parking-select" <?= $parking_filter ? "checked" : "" ?>>
+            <label class="form-check-label" for="parking-select">
+              Con Parcheggio
+            </label>
+          </div>
+
         </div>
 
         <!-- filtro per voto -->
 
-        <div class="col-6">
-          <label for="hotel-vote" class="form-label">Filtra per valutazione hotel</label>
-          <select class="form-select" name="hotel-vote" id="hotel-vote">
-            <option value="all">Qualsiasi</option>
-            <option value="1">1 stella</option>
-            <option value="2">2 stelle</option>
-            <option value="3">3 stelle</option>
-            <option value="4">4 stelle</option>
-            <option value="5">5 stelle</option>
-          </select>
+        <div class="col-12 mt-3">
+          <label for="hotel-vote" class="form-label ">Filtra per valutazione hotel</label>
+          <input type="number" class="form-control" name="hotel-vote" id="hotel-vote" min="1" max="5"
+            value="<?= $vote_filter ?>">
         </div>
       </div>
 
@@ -67,13 +66,23 @@
       </thead>
 
       <tbody>
-        <?php foreach ($filtered_hotels as $hotel) : ?>
+        <?php foreach ($hotels as $hotel): ?>
           <tr>
-            <td><?= $hotel["name"] ?></td>
-            <td><?= $hotel["description"] ?></td>
-            <td><?= $hotel["parking"] ? 'true' : 'false' ?></td>
-            <td><?= $hotel["vote"] ?></td>
-            <td><?= $hotel["distance_to_center"] . " km" ?></td>
+            <td>
+              <?= $hotel["name"] ?>
+            </td>
+            <td>
+              <?= $hotel["description"] ?>
+            </td>
+            <td>
+              <?= $hotel["parking"] ? 'true' : 'false' ?>
+            </td>
+            <td>
+              <?= $hotel["vote"] ?>
+            </td>
+            <td>
+              <?= $hotel["distance_to_center"] . " km" ?>
+            </td>
           </tr>
         <?php endforeach ?>
       </tbody>
